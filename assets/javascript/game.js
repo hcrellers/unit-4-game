@@ -25,6 +25,7 @@ var gemTotal = 0;
 var wins = 0;
 var losses = 0;
 
+
 //randomW = winnerArray[Math.floor(Math.random() * winnerArray.length)];
 //console.log(winnerArray);
 
@@ -36,26 +37,28 @@ $('#losses').html(losses);
 
 
 function reset() {
+
     gemTotal = 0;
+    targetNumber = [];
 
     var targetNumber = Math.floor(Math.random() * 102 + 19);
-    console.log(targetNumber)
+
     $('#generated-number').html(targetNumber);
 
     am = Math.floor(Math.random() * 12 + 1);
     em = Math.floor(Math.random() * 12 + 1);
     ru = Math.floor(Math.random() * 12 + 1);
     di = Math.floor(Math.random() * 12 + 1);
+
     $('#total-score').html(gemTotal);
-    $(document).click(function() {
-        console.log("music!")
-        $('#audio')[0].pause();
-    $(".gems").click(function() {
-        $('#audio')[0].play();
-    });   
-    });
+    $('#audio')[0].play();
 
-
+    if (gemTotal == targetNumber) {
+        winner();
+    }
+    else if (gemTotal > targetNumber) {
+        loser();
+    }
 
 }
 
@@ -67,7 +70,7 @@ function winner() {
     $(".winner").show();
     $(".loser").hide();
     reset();
-
+    
 
 }
 
@@ -79,6 +82,7 @@ function loser() {
     $(".loser").show();
     $(".winner").hide();
     reset();
+
 }
 
 
@@ -99,6 +103,7 @@ $('#image2').click(function () {
 
     gemTotal = gemTotal + em;
     $('#total-score').html(gemTotal);
+    
     if (gemTotal == targetNumber) {
         winner();
     }
@@ -110,6 +115,7 @@ $('#image3').click(function () {
 
     gemTotal = gemTotal + ru;
     $('#total-score').html(gemTotal);
+
     if (gemTotal == targetNumber) {
         winner();
     }
