@@ -41,7 +41,7 @@ function reset() {
     gemTotal = 0;
     targetNumber = [];
 
-    var targetNumber = Math.floor(Math.random() * 102 + 19);
+    targetNumber = Math.floor(Math.random() * 102 + 19);
 
     $('#generated-number').html(targetNumber);
 
@@ -60,8 +60,7 @@ function reset() {
         loser();
     }
 
-}
-
+} reset();
 
 function winner() {
     $("#game-message").html("You won!")
